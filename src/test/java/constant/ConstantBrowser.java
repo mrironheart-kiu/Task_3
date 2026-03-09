@@ -1,6 +1,6 @@
 package constant;
 
-public enum Browser {
+public enum ConstantBrowser {
     CHROME,
     YANDEX
 }
