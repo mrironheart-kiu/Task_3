@@ -6,7 +6,7 @@ import static constant.ConstantBrowser.*;
 import static constant.ConstantUrl.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestTest {
+public class UserRegistrationTest {
     private WebDriver driver;
 
     @BeforeEach

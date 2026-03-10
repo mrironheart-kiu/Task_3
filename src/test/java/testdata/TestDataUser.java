@@ -19,7 +19,7 @@ import static constant.ConstantUrl.*;
  * Класс для создания и удаления тестовых пользователей через API /register и /user
  */
 @Getter
-public class UserBaseTest {
+public class TestDataUser {
     protected HttpManager httpManager;
     protected Response response;
     protected UserRqBody userRqBody = new UserRqBody();
