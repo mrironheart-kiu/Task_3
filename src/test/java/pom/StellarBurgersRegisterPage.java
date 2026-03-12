@@ -2,51 +2,45 @@ package pom;
 
 import io.qameta.allure.Step;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static constant.ConstantButtonTitle.*;
 import static constant.ConstantErrorMessage.ERROR_MESSAGE_SHORT_PASSWORD;
+import static constant.ConstantFieldTitle.*;
 
 /**
  * Класс страницы регистрации сайта Stellar Burgers
  */
-@RequiredArgsConstructor
 @Getter
-public class StellarBurgersRegisterPage {
-    private final WebDriver driver;
+public class StellarBurgersRegisterPage extends BasePage {
 
-    // Поле "Имя" на странице регистрации [text()='Имя']
-    private final By FIELD_NAME = By.xpath("//label[text()='Имя']//../input[@name='name']");
-    // Поле "Email" на странице регистрации
-    private final By FIELD_EMAIL = By.xpath("//label[text()='Email']//../input[@name='name']");
-    // Поле "Пароль" на странице регистрации
+    public StellarBurgersRegisterPage(WebDriver driver) {
+        super(driver);
+    }
+
+    // Поле "Имя"
+    private final By FIELD_NAME = By.xpath("//label[text()='" + BUTTON_TITLE_NAME + "']//../input[@name='name']");
+    // Поле "Email"
+    private final By FIELD_EMAIL = By.xpath("//label[text()='" + BUTTON_TITLE_EMAIL + "']//../input[@name='name']");
+    // Поле "Пароль"
     private final By FIELD_PASSWORD = By.xpath("//input[@type='password']");
-    // Кнопка "Зарегистрироваться" на странице регистрации
-    private final By BUTTON_REGISTRATION = By.xpath("//button[text()='Зарегистрироваться']");
-    // Ошибка "Некорректный пароль" на странице регистрации
+    // Кнопка "Зарегистрироваться"
+    private final By BUTTON_REGISTRATION = By.xpath("//button[text()='" + BUTTON_TITLE_REGISTER + "']");
+    // Кнопка "Войти"
+    private final By BUTTON_LOGIN = By.xpath("//a[@href='/login']");
+    // Ошибка "Некорректный пароль"
     private final By TEXT_ERROR_SHORT_PASSWORD =
             By.xpath("//p[contains(text(),'" + ERROR_MESSAGE_SHORT_PASSWORD + "')]");
-
-    /**
-     * Вспомогательный метод для заполнения значений полей
-     *
-     * @param fieldName селектор для веб-элемента
-     */
-    private void checkAndClearField(By fieldName) {
-        driver.findElement(fieldName).isEnabled();
-        driver.findElement(fieldName).clear();
-    }
 
     /**
      * Метод записывает в поле "Имя" переданный параметр
      *
      * @param newName новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"Имя\"")
+    @Step("Заполняем поле \"" + BUTTON_TITLE_NAME + "\"")
     public void setName(String newName) {
-        checkAndClearField(FIELD_NAME);
-        driver.findElement(FIELD_NAME).sendKeys(newName);
+        setField(FIELD_NAME, newName);
     }
 
     /**
@@ -54,10 +48,9 @@ public class StellarBurgersRegisterPage {
      *
      * @param newEmail новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"Email\"")
+    @Step("Заполняем поле \"" + BUTTON_TITLE_EMAIL + "\"")
     public void setEmail(String newEmail) {
-        checkAndClearField(FIELD_EMAIL);
-        driver.findElement(FIELD_EMAIL).sendKeys(newEmail);
+        setField(FIELD_EMAIL, newEmail);
     }
 
     /**
@@ -65,18 +58,25 @@ public class StellarBurgersRegisterPage {
      *
      * @param newPassword новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"Пароль\"")
+    @Step("Заполняем поле \"" + BUTTON_TITLE_PASSWORD + "\"")
     public void setPassword(String newPassword) {
-        checkAndClearField(FIELD_PASSWORD);
-        driver.findElement(FIELD_PASSWORD).sendKeys(newPassword);
+        setField(FIELD_PASSWORD, newPassword);
     }
 
     /**
      * Метод нажимает кнопку "Зарегистрироваться"
      */
-    @Step("Нажимаем кнопку \"Зарегистрироваться\"")
+    @Step("Нажимаем кнопку \"" + BUTTON_TITLE_REGISTER + "\"")
     public void clickRegistrationButton() {
-        driver.findElement(BUTTON_REGISTRATION).click();
+        clickButton(BUTTON_REGISTRATION);
+    }
+
+    /**
+     * Метод нажимает кнопку "Войти"
+     */
+    @Step("Нажимаем кнопку \"" + BUTTON_TITLE_LOGIN_SHORT + "\"")
+    public void clickLoginButton() {
+        clickButton(BUTTON_LOGIN);
     }
 
     /**
