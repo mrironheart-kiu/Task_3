@@ -4,8 +4,6 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.Getter;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import pojo.user.UserRqBody;
 import pojo.user.UserRsBody;
 import util.HttpManager;
@@ -14,64 +12,84 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constant.ConstantUrl.*;
+import static constant.ConstantUrl.URL_USER_LOGIN;
 
 /**
- * Класс для создания и удаления тестовых пользователей через API /register и /user
+ * Класс для создания и удаления тестовых пользователей через API /register, /login и /user
  */
 @Getter
-public class TestDataUser {
-    protected HttpManager httpManager;
+public class TestDataUser extends TestDataProvider {
+    protected HttpManager httpManager = new HttpManager(URL_MAIN_PAGE);
     protected Response response;
     protected UserRqBody userRqBody = new UserRqBody();
     protected String userToken;
-    protected final List<String> userTokenList = new ArrayList<>();
+    protected List<String> userTokenList = new ArrayList<>();
 
-    @Step("Создаём тестовые данные перед выполнением теста")
-    @BeforeEach
-    void setUp() {
-        httpManager = new HttpManager(URL_MAIN_PAGE);
+    /**
+     * Метод создаёт пользователя со случайными данными
+     */
+    @Step("Создаём случайные учётные данные для тестового пользователя")
+    public void createUser() {
         userRqBody = userRqBody.toBuilder()
                 .email(TestDataProvider.getRandomEmail())
                 .password(TestDataProvider.getRandomPassword())
                 .name(TestDataProvider.getRandomName())
                 .build();
-        Allure.step("Устанавливаем URL по умолчанию: " + URL_MAIN_PAGE);
-        Allure.step("Создаём тестового клиента: " + userRqBody.toString());
-    }
-
-    @Step("Очищаем тестовые данные после выполнения теста")
-    @AfterEach
-    void tearDown() {
-        deleteUser(userTokenList);
+        Allure.step("Учётные данные для тестового пользователя: " + userRqBody.toString());
     }
 
     /**
-     * Метод создаёт пользователя со случайными данными
+     * Метод регистрирует пользователя со случайными данными
      */
-    public void createUser() {
+    public void registerUser() {
         response = httpManager.httpPost(URL_API_USER_REGISTER, userRqBody);
-
-        if (response.body().as(UserRsBody.class).getAccessToken() != null) {
-            userToken = response.body().as(UserRsBody.class).getAccessToken().split(" ")[1];
-            userTokenList.add(userToken);
-        }
+        saveUserToken();
     }
 
     /**
-     * Метод создаёт пользователя с указанными данными
+     * Метод регистрирует пользователя с указанными данными
      */
-    public void createUser(UserRqBody userRqBody) {
+    public void registerUser(UserRqBody userRqBody) {
         response = httpManager.httpPost(URL_API_USER_REGISTER, userRqBody);
+        saveUserToken();
+    }
+
+    /**
+     * Метод авторизируется созданным случайным пользователем
+     */
+    public void loginUser() {
+        response = httpManager.httpPost(URL_USER_LOGIN, userRqBody);
+        saveUserToken();
     }
 
     /**
      * Метод удаялет пользователя по его токену
      */
+    @Step("Удаляем учётные данные тестового пользователя")
     public void deleteUser(List<String> userTokenList) {
         if (!userTokenList.isEmpty()) {
             for (String userToken : userTokenList) {
                 httpManager.httpDelete(URL_API_USER, userToken);
             }
+        }
+    }
+
+    /**
+     * Метод авторизируется созданным случайным пользователем возвращает токен
+     * @return String пользовательский токен
+     */
+    public String getUserToken() {
+        loginUser();
+        return response.body().as(UserRsBody.class).getAccessToken().split(" ")[1];
+    }
+
+    /**
+     * Метод сохраняет токен пользователя
+     */
+    public void saveUserToken() {
+        if (response.body().as(UserRsBody.class).getAccessToken() != null) {
+            userToken = response.body().as(UserRsBody.class).getAccessToken().split(" ")[1];
+            userTokenList.add(userToken);
         }
     }
 }
