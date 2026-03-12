@@ -29,6 +29,9 @@ public class UserRegisterBaseTest extends BaseTest {
         testDataUser.deleteUser(testDataUser.getUserTokenList());
     }
 
+    /**
+     * Вспомогательный метод для регистрации пользователя на сайте
+     */
     public void registerUser() {
         driver.get(URL_REGISTER_PAGE);
         objRegisterPage = new StellarBurgersRegisterPage(driver);
@@ -39,6 +42,9 @@ public class UserRegisterBaseTest extends BaseTest {
         );
     }
 
+    /**
+     * Вспомогательный метод для попытки регистрации пользователя на сайте со слишком коротким паролем
+     */
     public void registerUserShortPassword() {
         driver.get(URL_REGISTER_PAGE);
         objRegisterPage = new StellarBurgersRegisterPage(driver);
