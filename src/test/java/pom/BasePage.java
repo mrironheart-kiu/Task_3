@@ -40,4 +40,15 @@ public class BasePage {
         checkAndClearField(locator);
         driver.findElement(locator).sendKeys(newValue);
     }
+
+    /**
+     * Метод возвращает значение атрибута по его имени
+     *
+     * @param locator       локатор типа Bу для идентификации веб-элемента
+     * @param attributeName значение типа String для поиска
+     * @return значение атрибута типа String
+     */
+    public String getAttributeValue(By locator, String attributeName) {
+        return driver.findElement(locator).getAttribute(attributeName);
+    }
 }

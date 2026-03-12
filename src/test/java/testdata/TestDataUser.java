@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constant.ConstantUrl.*;
-import static constant.ConstantUrl.URL_USER_LOGIN;
+import static constant.ConstantUrl.URL_API_USER_LOGIN;
 
 /**
  * Класс для создания и удаления тестовых пользователей через API /register, /login и /user
@@ -47,18 +47,10 @@ public class TestDataUser extends TestDataProvider {
     }
 
     /**
-     * Метод регистрирует пользователя с указанными данными
-     */
-    public void registerUser(UserRqBody userRqBody) {
-        response = httpManager.httpPost(URL_API_USER_REGISTER, userRqBody);
-        saveUserToken();
-    }
-
-    /**
      * Метод авторизируется созданным случайным пользователем
      */
     public void loginUser() {
-        response = httpManager.httpPost(URL_USER_LOGIN, userRqBody);
+        response = httpManager.httpPost(URL_API_USER_LOGIN, userRqBody);
         saveUserToken();
     }
 
@@ -76,6 +68,7 @@ public class TestDataUser extends TestDataProvider {
 
     /**
      * Метод авторизируется созданным случайным пользователем возвращает токен
+     *
      * @return String пользовательский токен
      */
     public String getUserToken() {

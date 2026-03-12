@@ -18,8 +18,10 @@ public class UserRegisterBaseTest extends BaseTest {
     @Step("Подготавливаем тестовые данные перед запуском теста")
     void setUp() {
         super.setUp();
+        objRegisterPage = new StellarBurgersRegisterPage(driver);
         testDataUser = new TestDataUser();
         testDataUser.createUser();
+
     }
 
     @AfterEach
@@ -34,7 +36,6 @@ public class UserRegisterBaseTest extends BaseTest {
      */
     public void registerUser() {
         driver.get(URL_REGISTER_PAGE);
-        objRegisterPage = new StellarBurgersRegisterPage(driver);
         objRegisterPage.registerUser(
                 testDataUser.getUserRqBody().getName(),
                 testDataUser.getUserRqBody().getEmail(),
@@ -47,7 +48,6 @@ public class UserRegisterBaseTest extends BaseTest {
      */
     public void registerUserShortPassword() {
         driver.get(URL_REGISTER_PAGE);
-        objRegisterPage = new StellarBurgersRegisterPage(driver);
         objRegisterPage.registerUserShortPassword(
                 testDataUser.getUserRqBody().getName(),
                 testDataUser.getUserRqBody().getEmail(),
