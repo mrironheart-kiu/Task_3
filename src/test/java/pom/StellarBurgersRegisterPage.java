@@ -1,14 +1,18 @@
 package pom;
 
 import io.qameta.allure.Step;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static constant.ConstantErrorMessage.ERROR_MESSAGE_SHORT_PASSWORD;
 
 /**
  * Класс страницы регистрации сайта Stellar Burgers
  */
 @RequiredArgsConstructor
+@Getter
 public class StellarBurgersRegisterPage {
     private final WebDriver driver;
 
@@ -20,6 +24,9 @@ public class StellarBurgersRegisterPage {
     private final By FIELD_PASSWORD = By.xpath("//input[@type='password']");
     // Кнопка "Зарегистрироваться" на странице регистрации
     private final By BUTTON_REGISTRATION = By.xpath("//button[text()='Зарегистрироваться']");
+    // Ошибка "Некорректный пароль" на странице регистрации
+    private final By TEXT_ERROR_SHORT_PASSWORD =
+            By.xpath("//p[contains(text(),'" + ERROR_MESSAGE_SHORT_PASSWORD + "')]");
 
     /**
      * Вспомогательный метод для заполнения значений полей
@@ -84,6 +91,21 @@ public class StellarBurgersRegisterPage {
         setName(newName);
         setEmail(newEmail);
         setPassword(newPassword);
+        clickRegistrationButton();
+    }
+
+    /**
+     * Метод выполняет регистрацию нового пользователя
+     *
+     * @param newName     новое значение для заполнения поля "Имя"
+     * @param newEmail    новое значение для заполнения поля "Email"
+     * @param newPassword новое значение для заполнения поля "Пароль"
+     */
+    @Step("Выполняем регистрацию нового пользователя")
+    public void registerUserShortPassword(String newName, String newEmail, String newPassword) {
+        setName(newName);
+        setEmail(newEmail);
+        setPassword(newPassword.substring(0, 5));
         clickRegistrationButton();
     }
 }
