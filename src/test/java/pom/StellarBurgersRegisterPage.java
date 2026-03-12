@@ -20,9 +20,9 @@ public class StellarBurgersRegisterPage extends BasePage {
     }
 
     // Поле "Имя"
-    private final By FIELD_NAME = By.xpath("//label[text()='" + BUTTON_TITLE_NAME + "']//../input[@name='name']");
+    private final By FIELD_NAME = By.xpath("//label[text()='" + FIELD_TITLE_NAME + "']//../input[@name='name']");
     // Поле "Email"
-    private final By FIELD_EMAIL = By.xpath("//label[text()='" + BUTTON_TITLE_EMAIL + "']//../input[@name='name']");
+    private final By FIELD_EMAIL = By.xpath("//label[text()='" + FIELD_TITLE_EMAIL + "']//../input[@name='name']");
     // Поле "Пароль"
     private final By FIELD_PASSWORD = By.xpath("//input[@type='password']");
     // Кнопка "Зарегистрироваться"
@@ -38,7 +38,7 @@ public class StellarBurgersRegisterPage extends BasePage {
      *
      * @param newName новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"" + BUTTON_TITLE_NAME + "\"")
+    @Step("Заполняем поле \"" + FIELD_TITLE_NAME + "\"")
     public void setName(String newName) {
         setField(FIELD_NAME, newName);
     }
@@ -48,7 +48,7 @@ public class StellarBurgersRegisterPage extends BasePage {
      *
      * @param newEmail новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"" + BUTTON_TITLE_EMAIL + "\"")
+    @Step("Заполняем поле \"" + FIELD_TITLE_EMAIL + "\"")
     public void setEmail(String newEmail) {
         setField(FIELD_EMAIL, newEmail);
     }
@@ -58,7 +58,7 @@ public class StellarBurgersRegisterPage extends BasePage {
      *
      * @param newPassword новое значение для заполнения поля
      */
-    @Step("Заполняем поле \"" + BUTTON_TITLE_PASSWORD + "\"")
+    @Step("Заполняем поле \"" + FIELD_TITLE_PASSWORD + "\"")
     public void setPassword(String newPassword) {
         setField(FIELD_PASSWORD, newPassword);
     }
