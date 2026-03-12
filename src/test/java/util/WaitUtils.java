@@ -32,7 +32,7 @@ public class WaitUtils {
      * @param driver  веб-драйвер по умолчанию
      * @param locator локатор веб-элемента страницы
      */
-    public static void waitToBeVisibable(WebDriver driver, By locator) {
+    public static void waitToBeVisible(WebDriver driver, By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
