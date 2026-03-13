@@ -2,15 +2,15 @@ package constant;
 
 public class ConstantUrl {
     public static final String URL_MAIN_PAGE = "https://stellarburgers.education-services.ru";
-    public static final String URL_REGISTER_PAGE = URL_MAIN_PAGE + "/register";
-    public static final String URL_LOGIN_PAGE = URL_MAIN_PAGE + "/login";
-    public static final String URL_ACCOUNT_PAGE = URL_MAIN_PAGE + "/account";
-    public static final String URL_PROFILE_PAGE = URL_ACCOUNT_PAGE + "/profile";
-    public static final String URL_FORGOT_PASSWORD_PAGE = URL_MAIN_PAGE + "/forgot-password";
+    public static final String URL_REGISTER_PAGE = String.format("%s/register", URL_MAIN_PAGE);
+    public static final String URL_LOGIN_PAGE = String.format("%s/login", URL_MAIN_PAGE);
+    public static final String URL_ACCOUNT_PAGE = String.format("%s/account", URL_MAIN_PAGE);
+    public static final String URL_PROFILE_PAGE = String.format("%s/profile", URL_ACCOUNT_PAGE);
+    public static final String URL_FORGOT_PASSWORD_PAGE = String.format("%s/forgot-password", URL_MAIN_PAGE);
 
     public static final String URL_BASE_API_PATH = "/api";
-    public static final String URL_BASE_API_AUTH_PATH = URL_BASE_API_PATH + "/auth";
-    public static final String URL_API_USER_REGISTER = URL_BASE_API_AUTH_PATH + "/register";
-    public static final String URL_API_USER_LOGIN = URL_BASE_API_AUTH_PATH + "/login";
-    public static final String URL_API_USER = URL_BASE_API_AUTH_PATH + "/user";
+    public static final String URL_BASE_API_AUTH_PATH = String.format("%s/auth", URL_BASE_API_PATH);
+    public static final String URL_API_USER_REGISTER = String.format("%s/register", URL_BASE_API_AUTH_PATH);
+    public static final String URL_API_USER_LOGIN = String.format("%s/login", URL_BASE_API_AUTH_PATH);
+    public static final String URL_API_USER = String.format("%s/user", URL_BASE_API_AUTH_PATH);
 }
