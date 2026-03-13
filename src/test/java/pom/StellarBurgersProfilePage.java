@@ -12,7 +12,7 @@ public class StellarBurgersProfilePage extends BasePage {
     }
 
     // Поле "Email"
-    private final By FIELD_EMAIL = By.xpath("//label[text()='" + FIELD_TITLE_LOGIN + "']//../input[@name='name']");
+    private final By FIELD_EMAIL = By.xpath(String.format("//label[text()='%s']//../input[@name='name']", FIELD_TITLE_LOGIN));
 
     /**
      * @return метод возвращает значение из поля "Email"

@@ -20,18 +20,18 @@ public class StellarBurgersRegisterPage extends BasePage {
     }
 
     // Поле "Имя"
-    private final By FIELD_NAME = By.xpath("//label[text()='" + FIELD_TITLE_NAME + "']//../input[@name='name']");
+    private final By FIELD_NAME = By.xpath(String.format("//label[text()='%s']//../input[@name='name']", FIELD_TITLE_NAME));
     // Поле "Email"
-    private final By FIELD_EMAIL = By.xpath("//label[text()='" + FIELD_TITLE_EMAIL + "']//../input[@name='name']");
+    private final By FIELD_EMAIL = By.xpath(String.format("//label[text()='%s']//../input[@name='name']", FIELD_TITLE_EMAIL));
     // Поле "Пароль"
     private final By FIELD_PASSWORD = By.xpath("//input[@type='password']");
     // Кнопка "Зарегистрироваться"
-    private final By BUTTON_REGISTRATION = By.xpath("//button[text()='" + BUTTON_TITLE_REGISTER + "']");
+    private final By BUTTON_REGISTRATION = By.xpath(String.format("//button[text()='%s']", BUTTON_TITLE_REGISTER));
     // Кнопка "Войти"
     private final By BUTTON_LOGIN = By.xpath("//a[@href='/login']");
     // Ошибка "Некорректный пароль"
     private final By TEXT_ERROR_SHORT_PASSWORD =
-            By.xpath("//p[contains(text(),'" + ERROR_MESSAGE_SHORT_PASSWORD + "')]");
+            By.xpath(String.format("//p[contains(text(),'%s')]", ERROR_MESSAGE_SHORT_PASSWORD));
 
     /**
      * Метод записывает в поле "Имя" переданный параметр

@@ -18,7 +18,7 @@ public class StellarBurgersHomePage extends BasePage {
     }
 
     // Кнопка "Войти в аккаунт"
-    private final By BUTTON_LOGIN = By.xpath("//button[text()='" + BUTTON_TITLE_LOGIN + "']");
+    private final By BUTTON_LOGIN = By.xpath(String.format("//button[text()='%s']", BUTTON_TITLE_LOGIN));
 
     /**
      * Метод нажимает кнопку "Войти в аккаунт"

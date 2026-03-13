@@ -17,11 +17,11 @@ public class StellarBurgersLoginPage extends BasePage {
     }
 
     // Поле "Email"
-    private final By FIELD_EMAIL = By.xpath("//label[text()='" + FIELD_TITLE_EMAIL + "']//../input[@name='name']");
+    private final By FIELD_EMAIL = By.xpath(String.format("//label[text()='%s']//../input[@name='name']", FIELD_TITLE_EMAIL));
     // Поле "Пароль"
     private final By FIELD_PASSWORD = By.xpath("//input[@type='password']");
     // Кнопка "Войти"
-    private final By BUTTON_LOGIN = By.xpath("//button[contains(text(),'" + BUTTON_TITLE_LOGIN_SHORT + "')]");
+    private final By BUTTON_LOGIN = By.xpath(String.format("//button[contains(text(),'%s')]", BUTTON_TITLE_LOGIN_SHORT));
 
     /**
      * Метод записывает в поле "Email" переданный параметр
