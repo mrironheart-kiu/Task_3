@@ -4,13 +4,14 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static constant.ConstantButtonTitle.*;
 import static constant.ConstantStoryTitle.TITLE_USER_LOGIN;
 
 public class UserLoginTest extends UserLoginBaseTest {
 
     @Test
     @Story(TITLE_USER_LOGIN)
-    @DisplayName("Успешная авторизация пользователя по кнопке \"Войти в аккаунт\" на главной странице сайта")
+    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN + "\" на главной странице сайта")
     @Description("Авторизируемся пользователем")
     void loginFromMainPageButtonSuccessTest() {
         loginUserFromMainPageButton();
@@ -20,7 +21,7 @@ public class UserLoginTest extends UserLoginBaseTest {
 
     @Test
     @Story(TITLE_USER_LOGIN)
-    @DisplayName("Успешная авторизация пользователя по кнопке \"Личный кабинет\" в хедере сайта")
+    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_ACCOUNT + "\" в хедере сайта")
     @Description("Авторизируемся пользователем")
     void loginFromHeaderPageButtonSuccessTest() {
         loginUseFromHeaderPageButton();
@@ -30,7 +31,7 @@ public class UserLoginTest extends UserLoginBaseTest {
 
     @Test
     @Story(TITLE_USER_LOGIN)
-    @DisplayName("Успешная авторизация пользователя по кнопке \"Войти\" на странице регистрации сайта")
+    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN_SHORT + "\" на странице регистрации сайта")
     @Description("Авторизируемся пользователем")
     void loginFromRegisterPageButtonSuccessTest() {
         loginUseFromRegisterPageButton();
@@ -40,7 +41,7 @@ public class UserLoginTest extends UserLoginBaseTest {
 
     @Test
     @Story(TITLE_USER_LOGIN)
-    @DisplayName("Успешная авторизация пользователя по кнопке \"Войти\" на странице восстановления пароля сайта")
+    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN_SHORT + "\" на странице восстановления пароля сайта")
     @Description("Авторизируемся пользователем")
     void loginFromForgotPasswordPageButtonSuccessTest() {
         loginUseFromForgotPasswordPageButton();
