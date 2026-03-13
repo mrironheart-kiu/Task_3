@@ -13,7 +13,7 @@ public class UserLoginTest extends UserLoginBaseTest {
     @Story(TITLE_USER_LOGIN)
     @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN + "\" на главной странице сайта")
     @Description("Авторизируемся пользователем")
-    void loginFromMainPageButtonSuccessTest() {
+    void loginFromMainPageLoginButtonSuccessTest() {
         loginUserFromMainPageButton();
 
         checkUserProfile();
@@ -23,7 +23,7 @@ public class UserLoginTest extends UserLoginBaseTest {
     @Story(TITLE_USER_LOGIN)
     @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_ACCOUNT + "\" в хедере сайта")
     @Description("Авторизируемся пользователем")
-    void loginFromHeaderPageButtonSuccessTest() {
+    void loginFromHeaderPageAccountButtonSuccessTest() {
         loginUseFromHeaderPageButton();
 
         checkUserProfile();
@@ -33,7 +33,7 @@ public class UserLoginTest extends UserLoginBaseTest {
     @Story(TITLE_USER_LOGIN)
     @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN_SHORT + "\" на странице регистрации сайта")
     @Description("Авторизируемся пользователем")
-    void loginFromRegisterPageButtonSuccessTest() {
+    void loginFromRegisterPageLoginButtonSuccessTest() {
         loginUseFromRegisterPageButton();
 
         checkUserProfile();
@@ -43,7 +43,7 @@ public class UserLoginTest extends UserLoginBaseTest {
     @Story(TITLE_USER_LOGIN)
     @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_LOGIN_SHORT + "\" на странице восстановления пароля сайта")
     @Description("Авторизируемся пользователем")
-    void loginFromForgotPasswordPageButtonSuccessTest() {
+    void loginFromForgotPasswordPageLoginButtonSuccessTest() {
         loginUseFromForgotPasswordPageButton();
 
         checkUserProfile();
