@@ -1,6 +1,7 @@
 package pom;
 
 import io.qameta.allure.Step;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,6 +11,7 @@ import static constant.ConstantFieldTitle.*;
 /**
  * Класс страницы авторизации сайта Stellar Burgers
  */
+@Getter
 public class StellarBurgersLoginPage extends BasePage {
 
     public StellarBurgersLoginPage(WebDriver driver) {

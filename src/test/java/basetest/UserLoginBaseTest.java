@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserLoginBaseTest extends BaseTest {
     private StellarBurgersLoginPage objLoginPage;
-    private StellarBurgersHomePage objMainPage;
+    private StellarBurgersHomePage objHomePage;
     private StellarBurgersHeaderPage objHeaderPage;
     private StellarBurgersRegisterPage objRegisterPage;
     private StellarBurgersForgotPasswordPage objForgotPasswordPage;
@@ -24,7 +24,7 @@ public class UserLoginBaseTest extends BaseTest {
     @Step("Подготавливаем тестовые данные перед запуском теста")
     void setUp() {
         super.setUp();
-        objMainPage = new StellarBurgersHomePage(driver);
+        objHomePage = new StellarBurgersHomePage(driver);
         objLoginPage = new StellarBurgersLoginPage(driver);
         objHeaderPage = new StellarBurgersHeaderPage(driver);
         objProfilePage = new StellarBurgersProfilePage(driver);
@@ -46,8 +46,8 @@ public class UserLoginBaseTest extends BaseTest {
      * Вспомогательный метод для авторизации пользователя на сайте через кнопку "Войти в аккаунт" на главной странице
      */
     public void loginUserFromMainPageButton() {
-        driver.get(URL_MAIN_PAGE);
-        objMainPage.clickLoginButton();
+        driver.get(URL_HOME_PAGE);
+        objHomePage.clickLoginButton();
         objLoginPage.loginUser(
                 testDataUser.getUserRqBody().getEmail(),
                 testDataUser.getUserRqBody().getPassword()
@@ -58,7 +58,7 @@ public class UserLoginBaseTest extends BaseTest {
      * Вспомогательный метод для авторизации пользователя на сайте через кнопку "Личный кабинет" в хедере
      */
     public void loginUseFromHeaderPageButton() {
-        driver.get(URL_MAIN_PAGE);
+        driver.get(URL_HOME_PAGE);
         objHeaderPage.clickAccountButton();
         objLoginPage.loginUser(
                 testDataUser.getUserRqBody().getEmail(),
@@ -92,7 +92,7 @@ public class UserLoginBaseTest extends BaseTest {
 
     @Step("Проверяем данные пользователя")
     public void checkUserProfile() {
-        WaitUtils.waitUrlToBe(driver, URL_MAIN_PAGE + "/");
+        WaitUtils.waitUrlToBe(driver, URL_HOME_PAGE + "/");
         objHeaderPage.clickAccountButton();
         WaitUtils.waitUrlToBe(driver, URL_PROFILE_PAGE);
         Allure.step("Email пользователя в личном кабинете: " + objProfilePage.getEmailFieldValue());

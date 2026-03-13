@@ -21,7 +21,7 @@ public class UserLoginTest extends UserLoginBaseTest {
 
     @Test
     @Story(TITLE_USER_LOGIN)
-    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_ACCOUNT + "\" в хедере сайта")
+    @DisplayName("Успешная авторизация пользователя по кнопке \"" + BUTTON_TITLE_PROFILE + "\" в хедере сайта")
     @Description("Авторизируемся пользователем")
     void loginFromHeaderPageAccountButtonSuccessTest() {
         loginUseFromHeaderPageButton();

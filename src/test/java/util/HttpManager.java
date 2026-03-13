@@ -34,34 +34,6 @@ public class HttpManager {
     }
 
     /**
-     * Вызов метода GET
-     *
-     * @param path Путь до API
-     * @return Объект Response для дальнейшей обработки
-     */
-    @Step("Выполняем вызов GET на метод {0}")
-    public Response httpGet(String path) {
-        return given()
-                .contentType(ContentType.JSON)
-                .get(path);
-    }
-
-    /**
-     * Вызов метода GET с токеном пользователя
-     *
-     * @param path      Путь до API
-     * @param userToken Токен пользователя
-     * @return Объект Response для дальнейшей обработки
-     */
-    @Step("Выполняем вызов GET на метод {0} с токеном пользователя")
-    public Response httpGet(String path, String userToken) {
-        return userToken == null ? httpGet(path) :
-                given().contentType(ContentType.JSON)
-                        .and().auth().oauth2(userToken)
-                        .get(path);
-    }
-
-    /**
      * Вызов метода POST
      *
      * @param path Путь до API
@@ -71,53 +43,6 @@ public class HttpManager {
     @Step("Выполняем вызов POST на метод {0}")
     public Response httpPost(String path, Object body) {
         return given().config(getConfig()).contentType(ContentType.JSON).and().body(body).when().post(path);
-    }
-
-    /**
-     * Вызов метода POST с токеном пользователя
-     *
-     * @param path      Путь до API
-     * @param body      Тело запроса API
-     * @param userToken Токен пользователя
-     * @return Объект Response для дальнейшей обработки
-     */
-    @Step("Выполняем вызов POST на метод {0}")
-    public Response httpPost(String path, Object body, String userToken) {
-        return userToken == null ? httpPost(path, body) :
-                given().config(getConfig()).contentType(ContentType.JSON)
-                        .and().auth().oauth2(userToken)
-                        .and().body(body)
-                        .when().post(path);
-    }
-
-    /**
-     * Вызов метода PATCH
-     *
-     * @param path Путь до API
-     * @param body Тело запроса API
-     * @return Объект Response для дальнейшей обработки
-     */
-    @Step("Выполняем вызов PATCH на метод {0}")
-    public Response httpPatch(String path, Object body) {
-        return given().config(getConfig()).contentType(ContentType.JSON).and().body(body).when().patch(path);
-    }
-
-    /**
-     * Вызов метода PATCH с токеном пользователя
-     *
-     * @param path      Путь до API
-     * @param body      Тело запроса API
-     * @param userToken Токен пользователя
-     * @return Объект Response для дальнейшей обработки
-     */
-    @Step("Выполняем вызов PATCH на метод {0} с токеном пользователя")
-    public Response httpPatch(String path, Object body, String userToken) {
-        return userToken == null ? httpPatch(path, body) :
-                given().config(getConfig())
-                        .contentType(ContentType.JSON)
-                        .and().auth().oauth2(userToken)
-                        .and().body(body)
-                        .when().patch(path);
     }
 
     /**

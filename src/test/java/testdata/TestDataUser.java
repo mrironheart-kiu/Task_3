@@ -19,7 +19,7 @@ import static constant.ConstantUrl.URL_API_USER_LOGIN;
  */
 @Getter
 public class TestDataUser extends TestDataProvider {
-    protected HttpManager httpManager = new HttpManager(URL_MAIN_PAGE);
+    protected HttpManager httpManager = new HttpManager(URL_HOME_PAGE);
     protected Response response;
     protected UserRqBody userRqBody = new UserRqBody();
     protected String userToken;
