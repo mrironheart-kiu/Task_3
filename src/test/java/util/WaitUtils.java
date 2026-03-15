@@ -46,4 +46,17 @@ public class WaitUtils {
         new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.urlToBe(url));
     }
+
+    /**
+     * Метод ожидает указанное изменение в выбранном атрибует веб-элемента
+     *
+     * @param driver        веб-драйвер по умолчанию
+     * @param locator       локатор веб-элемента страницы
+     * @param attribute     имя атрибута, в котором ожидается изменение. Пример: "class", "type"
+     * @param expectedValue значение, которое ожидается в атрибуте
+     */
+    public static void waitAttributeChange(WebDriver driver, By locator, String attribute, String expectedValue) {
+        new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions.attributeContains(locator, attribute, expectedValue));
+    }
 }

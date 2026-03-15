@@ -11,7 +11,7 @@ import util.WaitUtils;
 import static constant.ConstantButtonTitle.*;
 import static constant.ConstantTestFailComment.DEFAULT_ERROR_COMMENT;
 import static constant.ConstantUrl.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RedirectTestBaseTest extends BaseTest {
     private StellarBurgersLoginPage objLoginPage;
@@ -86,6 +86,8 @@ public class RedirectTestBaseTest extends BaseTest {
      */
     public void switchBuilderFilterToBun() {
         switchBuilderFilterToSauce();
+        WaitUtils.waitAttributeChange(driver,
+                objHomePage.getBUTTON_BUILDER_SAUCE(), "class","tab_tab_type_current__2BEPc");
         objHomePage.clickBuilderBunButton();
     }
 
@@ -125,18 +127,21 @@ public class RedirectTestBaseTest extends BaseTest {
     @Step("Проверяем переход по фильтру \"" + BUTTON_TITLE_INGREDIENT_BUN + "\" в конструкторе")
     public void checkBuilderFilterBun() {
         WaitUtils.waitUrlToBe(driver, URL_HOME_PAGE + "/");
-        WaitUtils.waitToBeVisible(driver, objHomePage.getTITLE_BUILDER_BUN());
+        WaitUtils.waitAttributeChange(driver,
+                objHomePage.getBUTTON_BUILDER_BUN(), "class","tab_tab_type_current__2BEPc");
     }
 
     @Step("Проверяем переход по фильтру \"" + BUTTON_TITLE_INGREDIENT_SAUCE + "\" в конструкторе")
     public void checkBuilderFilterSauce() {
         WaitUtils.waitUrlToBe(driver, URL_HOME_PAGE + "/");
-        WaitUtils.waitToBeVisible(driver, objHomePage.getTITLE_BUILDER_SAUCE());
+        WaitUtils.waitAttributeChange(driver,
+                objHomePage.getBUTTON_BUILDER_SAUCE(), "class","tab_tab_type_current__2BEPc");
     }
 
     @Step("Проверяем переход по фильтру \"" + BUTTON_TITLE_INGREDIENT_FILLING + "\" в конструкторе")
     public void checkBuilderFilterFilling() {
         WaitUtils.waitUrlToBe(driver, URL_HOME_PAGE + "/");
-        WaitUtils.waitToBeVisible(driver, objHomePage.getTITLE_BUILDER_FILLING());
+        WaitUtils.waitAttributeChange(driver,
+                objHomePage.getBUTTON_BUILDER_FILLING(), "class","tab_tab_type_current__2BEPc");
     }
 }

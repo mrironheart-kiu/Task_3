@@ -24,21 +24,14 @@ public class StellarBurgersHomePage extends BasePage {
     // Кнопка "Оформить заказ"
     private final By BUTTON_ORDER = By.xpath(String.format("//button[text()='%s']", BUTTON_TITLE_ORDER));
     // Кнопка "Булки" в конструкторе
-    private final By BUTTON_BUILDER_BUN = By.xpath(String.format("//span[text()='%s']", BUTTON_TITLE_INGREDIENT_BUN));
+    private final By BUTTON_BUILDER_BUN =
+            By.xpath(String.format("//span[text()='%s']/parent::div", BUTTON_TITLE_INGREDIENT_BUN));
     // Кнопка "Соусы" в конструкторе
     private final By BUTTON_BUILDER_SAUCE =
-            By.xpath(String.format("//span[text()='%s']", BUTTON_TITLE_INGREDIENT_SAUCE));
+            By.xpath(String.format("//span[text()='%s']/parent::div", BUTTON_TITLE_INGREDIENT_SAUCE));
     // Кнопка "Начинки" в конструкторе
     private final By BUTTON_BUILDER_FILLING =
-            By.xpath(String.format("//span[text()='%s']", BUTTON_TITLE_INGREDIENT_FILLING));
-    // Заголовок "Булки" в конструкторе
-    private final By TITLE_BUILDER_BUN = By.xpath(String.format("//h2[text()='%s']", BUTTON_TITLE_INGREDIENT_BUN));
-    // Заголовок "Соусы" в конструкторе
-    private final By TITLE_BUILDER_SAUCE =
-            By.xpath(String.format("//h2[text()='%s']", BUTTON_TITLE_INGREDIENT_SAUCE));
-    // Заголовок "Начинки" в конструкторе
-    private final By TITLE_BUILDER_FILLING =
-            By.xpath(String.format("//h2[text()='%s']", BUTTON_TITLE_INGREDIENT_FILLING));
+            By.xpath(String.format("//span[text()='%s']/parent::div", BUTTON_TITLE_INGREDIENT_FILLING));
 
     /**
      * Метод нажимает кнопку "Войти в аккаунт"

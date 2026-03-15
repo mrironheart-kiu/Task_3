@@ -38,7 +38,7 @@ public class BasePage {
      */
     public void setField(By locator, String newValue) {
         checkAndClearField(locator);
-        driver.findElement(locator).sendKeys(newValue);
+        sendKeys(locator, newValue);
     }
 
     /**
@@ -50,5 +50,15 @@ public class BasePage {
      */
     public String getAttributeValue(By locator, String attributeName) {
         return driver.findElement(locator).getAttribute(attributeName);
+    }
+
+    /**
+     * Метод передаёт веб-элементу указанную строку - для ввода в поле или передачи команд
+     *
+     * @param locator локатор типа Bу для идентификации веб-элемента
+     * @param keys    значение типа String для передачи веб-элементу
+     */
+    public void sendKeys(By locator, String keys) {
+        driver.findElement(locator).sendKeys(keys);
     }
 }
